@@ -1,0 +1,155 @@
+#parse("./mypages/header.html")
+${user}
+
+<link href="./mycss/home.css" rel="stylesheet">
+<hr>
+<div class="myfloat1">
+    <div class="container">
+        <!--遍历的得到view类-->
+
+        <div class="row clearfix">
+
+            <div class="col-md-8 main-content">
+                #foreach($vo in $vos)
+                <div class="media">
+                    <a href="#" class="pull-left">
+                        <img src="$!{vo.user.headUrl}" class="media-object" alt=''/>
+                    </a>
+
+
+                    <div class="media-body">
+                        <h5 class="media-heading">
+
+                            来自：
+                            <a href="#">
+                                热门文章
+                            </a>
+                            <br>
+
+                        </h5>
+
+                        <h2 class="media-heading">
+                            <a href="/question/$!{vo.question.id}">
+                                $!{vo.question.title}
+
+                            </a>
+                        </h2>
+
+                        <h5 class="media-heading">
+                            <a href="/profile/$!{vo.user.id}">
+                                $!{vo.user.name}，及其自我介绍.
+
+                            </a>
+                            $date.format('yyyy年MM月dd日 HH:mm:ss', $!{vo.question.createdDate})
+                        </h5>
+                        <div class="media">
+
+                            <div class="media-body ">
+
+                                ${vo.question.content}
+                            </div>
+                        </div>
+
+                        <div>
+                            <a href="#">333个人关注</a>
+                            <a href="#">${vo.question.commentCount}条评论</a>
+                            <a href="#">22个点赞</a>
+                            <h5 class="media-heading">
+                                <button type="button" class="btn btn-sm ">
+                                    <a href="#">
+                                        关注问题
+                                    </a>
+                                </button>
+                                <button type="button" class="btn btn-sm ">
+                                    <a href="#">
+                                        点赞
+                                    </a>
+                                </button>
+                                <button type="button" class="btn btn-sm ">
+                                    <a href="#">
+                                        点踩
+                                    </a>
+                                </button>
+
+
+
+
+
+
+                            </h5>
+                        </div>
+                    </div>
+                </div>
+                #end
+
+            </div>
+
+            <!-- 下面写边栏-->
+            <aside class="col-md-4 sidebar">
+                <div class="widget">
+                    <h4 class="title">
+                        我的主页
+                    </h4>
+                    <div class="content community">
+                        <p>
+                            <a>
+                                注册/登陆
+                            </a>
+                        </p>
+                        <p>
+                            <a href="#" >我的私信</a>
+                        </p>
+                        <p>
+                            <a href="#" >注销</a>
+                        </p>
+                    </div>
+                </div>
+                <div class="widget">
+                    <h4 class="title">欢迎您</h4>
+                    <div class="content download">
+                        <a href="#" class="btn btn-default btn-block">
+
+                            注册/登陆
+                        </a>
+
+                    </div>
+
+
+
+
+
+
+
+                </div>
+                <div class="widget">
+                    <h4 class="title">标签云</h4>
+                    <div class="content tag-cloud">
+                        <a href="#" >JAVA</a>
+                        <a href="#" >js</a>
+                        <a href="#" >c++</a>
+                        <a href="#" >java</a>
+                        <a href="#" >浙江</a>
+                        <a href="#" >杭州</a>
+                    </div>
+                </div>
+
+        </aside>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,38 @@
+#parse("./mypages/header.html")
+
+<div class="container">
+    <div class="row clearfix">
+        <aside class="col-md-3 sidebar"></aside>
+        <div class="col-md-6">
+
+            <form id="messageSendform" method="post">
+                <div>
+                    发给：
+                    <div>
+                        <input type="text" name="toName" aria-label="To" placeholder="TO" required="" style="width:300px" >
+                    </div>
+
+                    内容：</br>
+                    <div>
+
+                        <textarea name="content" aria-label="内容" placeholder="内容" style="margin:auto" rows="12"
+                                  cols="40" required=""></textarea>
+                    </div>
+                </div>
+                <br>
+
+                <div>
+                    <button class="btn btn-sm " style="margin-bottom: auto" type="submit"
+                            onclick="form=document.getElementById('messageSendform');form.action='/msg/addMessage1'">发送
+                    </button>
+                    <button class="btn btn-sm ">取消</button>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

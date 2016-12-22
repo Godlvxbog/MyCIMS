@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh-CN"
+      class="is-AppPromotionBarVisible cssanimations csstransforms csstransitions flexbox no-touchevents no-mobile">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+
+    <link rel="stylesheet" href="../editor/css/style.css" />
+    <link rel="stylesheet" href="../editor/css/editormd.css" />
+
+</head>
+<body >
+<br>
+<br><br><br><br><br><br><br><br><br><br>
+
+
+<form id="questionform" method="post">
+    <div class="group-inputs">
+        <div class="input-wrapper">
+            <input style="height: 50px;width: 600px" type="text" name="title" aria-label="标题" placeholder="标题" required="">
+        </div>
+        <br>
+
+    </div>
+    <br>
+
+
+    <div id="test-editormd">
+        <textarea class="editormd-markdown-textarea" name="test-editormd-markdown-doc"></textarea>
+        <!-- 第二个隐藏文本域，用来构造生成的HTML代码，方便表单POST提交，这里的name可以任意取，后台接受时以这个name键为准 -->
+
+        <textarea  name="content" >
+
+        </textarea>
+    </div>
+
+
+
+
+
+
+    <div class="command clearfix">
+        <button class="btn btn-sm " style="margin-bottom: auto" type="submit" onclick="form=document.getElementById('questionform');form.action='/question/add1'">发布</button>
+
+        <button class="btn btn-sm"  >取消</button>
+    </div>
+
+
+
+
+
+</form>
+
+
+
+
+
+<script src="../editor/js/jquery.min.js"></script>
+<script src="../editor/js/editormd.min.js"></script>
+<script type="text/javascript">
+    var testEditor;
+
+    $(function() {
+        testEditor = editormd("test-editormd", {
+            width   : "60%",
+            height  : 600,
+            syncScrolling : "single",
+            path    : "./editor/lib/",
+            saveHTMLToTextarea : true
+        });
+
+    });
+</script>
+
+
+
+
+
+</body>
+</html>

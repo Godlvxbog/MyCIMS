@@ -1,0 +1,190 @@
+#parse("./mypages/header.html")
+<link href="../mycss/detail.css" rel="stylesheet">
+
+<hr>
+<div class="myfloat1">
+    <div class="container" >
+        <div class="row clearfix">
+
+            <div class="col-md-8 column" id="detailtxt">
+                <div class="media">
+                    <a href="#" class="pull-left">
+                        <img src="${comment.user.headUrl}" class="media-object" alt=''/>
+                    </a>
+
+
+                    <div class="media-body">
+                        <h5 class="media-heading">
+
+                            来自：
+                            <a href="#">
+                                热门文章
+                            </a>
+                            <br>
+                            <a href="#">333个人关注</a>
+                            <a href="#">59条评论</a>
+                            <a href="#">$!{comment.likeCount}个赞同</a>
+                        </h5>
+
+                        <h3 class="media-heading">
+
+                                $!{question.title}
+
+
+                        </h3>
+
+                        <h5 class="media-heading">
+                            <a href="#">
+                                ${comment.user.name}，及其自我介绍.
+
+                            </a>
+                            创建时间$date.format('yyyy-MM-dd HH:mm:ss', $question.createDate)
+                        </h5>
+                        <div class="media">
+
+                            <div class="media-body " id="view2">
+                                 <textarea rows="4" cols="100">
+                                    $!{question.content}
+                                 </textarea>
+                            </div>
+                        </div>
+
+                        <div>
+                            <h5 class="media-heading">
+
+                                        <form id="followform" method="post">
+                                            <input type="hidden" name="questionId" value="$!{question.id}" >
+                                            <button  type="submit" class="btn btn-sm " onclick="form=document.getElementById('followform');form.action='/followQuestion'">关注</button>
+
+                                        </form>
+
+                            </h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+            <hr>
+
+        #foreach($comment in $comments)
+            <div class="row clearfix">
+                <div class="col-md-8 column" id="detailtxt2">
+                <div class="media">
+                    <a href="#" class="pull-left">
+                        <img src="${comment.user.headUrl}" class="media-object" alt=''/>
+                    </a>
+
+
+                    <div class="media-body">
+                        <h5 class="media-heading">
+                            <a href="#">
+                                ${comment.user.name}，及其自我介绍.
+
+                            </a>
+                        </h5>
+
+                        $!{comment.likeCount}个赞同
+                        <br>
+                        <form id="likeform" method="post" >
+                            <input type="hidden" name="commentId" value="${comment.comment.id}" >
+                            <button class="btn btn-sm " type="submit" onclick="form=document.getElementById('likeform');form.action='/like'">赞同</button>
+                            <button class="btn btn-sm " type="submit" onclick="form=document.getElementById('likeform');form.action='/dislike'">反对</button>
+                        </form>
+
+
+
+                        <div class="media">
+
+                            <div class="media-body " id="view3">
+                                <textarea rows="4" cols="100">
+                                $comment.comment.content
+                                </textarea>
+                            </div>
+                        </div>
+
+                        <div>
+                            <a href="#">59条评论</a>
+
+                            发布于 $date.format('yyyy-MM-dd HH:mm:ss', $comment.comment.createdDate)
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        <hr>
+        #end
+        <hr>
+        <div class="row clearfix">
+            <div class="col-md-8 column" id="detailtxt3">
+
+                <form action="/addComment" method="post">
+                    <input type="hidden" name="questionId" value="$!{question.id}"/>
+
+                    <textarea rows="3" cols="80" name="content" id="content3"  ></textarea>
+
+                    <br>
+                      <button type="submit"  id="detailbtxttn">
+                          发布回答
+                      </button>
+
+                </form>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+
+<div>
+
+    <script src="../editor/js/jquery.min.js"></script>
+    <script src="../editor/lib/marked.min.js"></script>
+    <script src="../editor/lib/prettify.min.js"></script>
+
+    <script src="../editor/lib/raphael.min.js"></script>
+    <script src="../editor/lib/underscore.min.js"></script>
+    <script src="../editor/lib/sequence-diagram.min.js"></script>
+    <script src="../editor/lib/flowchart.min.js"></script>
+    <script src="../editor/lib/jquery.flowchart.min.js"></script>
+
+    <script src="../editor/editormd.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            var View2,view3;
+
+            $.get("test.md", function (markdown) {
+
+
+            });
+
+            View2 = editormd.markdownToHTML("view2", {
+                htmlDecode: "style,script,iframe",
+                emoji: true,
+                taskList: true,
+                tex: true,  // 默认不解析
+                flowChart: true,  // 默认不解析
+                sequenceDiagram: true,  // 默认不解析
+            });
+
+            View3 = editormd.markdownToHTML("view3", {
+                htmlDecode: "style,script,iframe",
+                emoji: true,
+                taskList: true,
+                tex: true,  // 默认不解析
+                flowChart: true,  // 默认不解析
+                sequenceDiagram: true,  // 默认不解析
+            });
+
+
+
+
+
+        });
+    </script>
+</div>
+
+
+#parse("footer.html")

@@ -1,0 +1,55 @@
+#parse("./mypages/header.html")
+
+<div class="container">
+    <div class="row clearfix">
+        <aside class="col-md-2 sidebar"></aside>
+
+        <div class="col-md-8">
+
+            <ul>
+
+                #foreach($conversation in $conversations)
+                <li>
+
+                    <div>
+
+                        <span>$date.format('yyyy-MM-dd HH:mm:ss', $conversation.message.createdDate)</span>
+
+
+                        <a href="/msg/detail?conversationId=$conversation.message.conversationId">
+                            共$conversation.message.id条会话
+                        </a>
+
+
+
+                        <span>
+                            $conversation.unread 条未读消息
+                        </span>
+                        <br>
+                        <a href="/user/$!{conversation.user.id}">
+                            <img alt="头像" src="$conversation.user.headUrl">
+                        </a>
+
+
+                        <a>
+                            消息发送者：$conversation.user.name
+                        </a>
+
+                        <p>
+                            最新消息： $conversation.message.content
+                        </p>
+
+
+                    </div>
+                </li>
+                <hr>
+                #end
+            </ul>
+
+        </div>
+
+        <aside class="col-md-2 sidebar"></aside>
+
+    </div>
+</div>
+#parse("footer.html")

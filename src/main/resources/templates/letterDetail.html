@@ -1,0 +1,40 @@
+#parse("./mypages/header.html")
+
+<hr>
+<div class="container">
+    <div class="row clearfix">
+        <aside class="col-md-2 sidebar"></aside>
+
+        <div class="col-md-8 main-content">
+
+            <div>
+                <ul class="letter-chatlist">
+                    #foreach($message in $messages)
+                    <li>
+                        <a>
+                            <img alt="头像" src="${message.user.headUrl}">
+                        </a>
+                        <br>
+                        消息发送者：${ message.user.name}
+                        <p class="chat-content">
+                            $message.message.content
+                        </p>
+
+                        <p class="letter-time">
+                            $date.format('yyyy-MM-dd HH:mm:ss', $message.message.createdDate)
+                        </p>
+
+                    </li>
+                    <hr>
+                    #end
+                </ul>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-2 sidebar"></div>
+    </div>
+</div>
+
+#parse("footer.html")

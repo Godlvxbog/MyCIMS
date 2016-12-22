@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <hr>
+    ${map.size}
+    ${color}
+
+//
+    #foreach($key in $map.keySet())
+        $key :---- $map.get($key)
+    #end
+    <br>
+1111
+    #foreach($key in $map.keySet())
+    key: $key, Value: $map.get($key)
+    <br>
+    #end
+
+
+    #foreach($value in $list)
+           颜色是： $value ,
+    <br>
+    #end
+
+
+<br>
+
+#set($test = "This is a Test")
+
+$test
+
+
+#set($num= "1")
+
+#if(num)
+  $num :--------
+#else
+    test2小于一
+
+#end
+
+
+</body>
+</html>
